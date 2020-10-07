@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /> 
+		<title>Actividad multiplos de 3</title>
+		<script type="text/javascript">  
+		
+		function verCalificacion(nota){
+			nota = parseInt(nota);
+			switch(nota){
+				case 0:
+				case 1:
+				case 2:
+				case 3:
+				case 4:
+					console.log('Suspenso');
+					break;
+				case 5:
+				case 6:
+					console.log('Aprobado');
+					break;
+				case 7:
+				case 8:
+					console.log('Notable');
+					break;
+				case 9:
+				case 10:
+					console.log('Sobresaliente');
+					break;
+				default:
+					console.log('Valor erroneo');
+					break;
+			}
+		}
+		</script> 
+	</head>
+	<body>
+		<span> Ver resultado</span>
+		<br/>
+		<input type= "text" id= 'txtnota' value="5"/>
+		<br/>
+		<input type="button" onclick = "verCalificacion(document.getElementById('txtnota').value);" value = 'Pulsar'>
+	</body> 
+</html>
+
+<!--
+ Una vez que introducimos el numero 5, ejecuta la opción 5 y al no haber un break se ejecutan todos los casos siguientes
+ Una vez que introducimos el 9 nos muestra valor erróneo porque tenemos que crear un caso con el numero 9 y no podemos poner condiciones
+ Una vez que introducimos 2 nos muestra valor erróneo ocurre lo mismo que cuando introduciamos el 9, no se pueden poner condiciones y tenemos que crear un caso para 2
+-->

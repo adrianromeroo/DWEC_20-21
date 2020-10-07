@@ -1,0 +1,29 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<title>Numero par o impar</title>
+	<script type="text/javascript">
+
+		function verParImpar() {
+			if (document.getElementById('txtdato').value % 2 == 0 ) {
+				console.log("par");
+			}
+			else {
+				console.log("impar");
+			}
+		}
+	</script>
+</head>
+
+<body>
+	<span> Ver resultado</span>
+	<br />
+	<input type="text" id='txtdato' />
+	<br />
+	<input type="button" onclick="verParImpar();" value='Pulsar'>
+</body>
+
+</html>
