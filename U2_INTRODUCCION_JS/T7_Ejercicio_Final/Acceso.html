@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio_Final</title>
+    <script type="text/javascript" src="validacion.js"> </script>
+    <style>
+        h2 {
+            color: red;
+            margin-left: 40px;
+        }
+        #borrar {
+            margin-left: 20px;
+        }
+        #enviar {
+            margin-left: 20px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <form>
+    <h2> Identificación mediante el NIF: </h2>
+    <label for="dni">DNI:</label>
+    <input id="dni" name="dni" type="text" />
+
+    <label for="letra">Letra:</label>
+        <select name="letra" id="letra">
+            <option value="t">T</option>
+            <option value="r">R</option>
+            <option value="w">W</option>
+            <option value="a">A</option>
+            <option value="g">G</option>
+            <option value="m">M</option>
+            <option value="y">Y</option>
+            <option value="f">F</option>
+            <option value="p">P</option>
+            <option value="d">D</option>
+            <option value="x">X</option>
+            <option value="b">B</option>
+            <option value="n">N</option>
+            <option value="j">J</option>
+            <option value="z">Z</option>
+            <option value="s">S</option>
+            <option value="q">Q</option>
+            <option value="v">V</option>
+            <option value="h">H</option>
+            <option value="l">L</option>
+            <option value="c">C</option>
+            <option value="k">K</option>
+            <option value="e">E</option>
+        </select> <br></br>
+
+        <button type="button" onclick="ejercicio()" id="enviar">ENVIAR</button>
+        <button type="reset" id="borrar">BORRAR</button>
+    </form>
+
+</body>
+</html>
