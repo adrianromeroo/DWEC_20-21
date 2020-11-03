@@ -1,21 +1,19 @@
-let password;
-
-let securePassword = false;
+//Variables
 let tamano = false;
 let mayuscula = false;
 let minuscula = false;
 let numero = false;
 let value = false;
 
-while(!securePassword) {
-    password = prompt("Introduce una propuesta de contraseña: ");
+    //Variable de la propuesta de contraseña
+    let password = prompt("Introduzca una propuesta de contraseña: ");
 
-    //Tamaño
-    if (password.length<8 || password.length>16){
-        document.write("La contraseña debe contener enter 8 y 16 carácteres. <br>");
-        tamano = false;
-    } else {
+    //Comprobar Longitud
+    if (password.length >= 8 || password.length <= 16){
         tamano = true;
+    } else {
+        document.write("La contraseña debe contener enter 8 y 16 carácteres <br>");
+        tamano = false;
     }
 
     //Contiene Mayúscula
@@ -28,8 +26,8 @@ while(!securePassword) {
         }
     }
     
-    if (!mayuscula) {
-        document.write("La contraseña debe contener una letra al menos en mayúsculas.<br>");
+    if (mayuscula == false) {
+        document.write("La contraseña debe contener una letra mayúscula <br>");
     }
     
     //Contiene Minúscula
@@ -42,8 +40,8 @@ while(!securePassword) {
         }
     }
 
-    if (!minuscula) {
-        document.write("La contraseña debe contener una letra al menos en minúsculas.<br>");
+    if (minuscula == false) {
+        document.write("La contraseña debe contener una letra al menos en minúsculas <br>");
     }
 
     //Contiene Número
@@ -54,8 +52,8 @@ while(!securePassword) {
         }
     }
 
-    if (!numero) {
-        document.write("La contraseña debe contener al menus un número.<br>");
+    if (numero == false) {
+        document.write("La contraseña debe contener un número <br>");
     }
 
     //Contiene un valor de los anteriores
@@ -73,15 +71,12 @@ while(!securePassword) {
         }
     }
 
-    if(!value) {
-        document.write("La contraseña debe contener al menos alguno de los siguientes valores: - _ @ # $ % &<br>");
+    if(value == false) {
+        document.write("La contraseña debe contener algun caracter especial: - _ @ # $ % &<br>");
     }
 
-    if (tamano && mayuscula && minuscula && numero && value) {
-        securePassword = true;
-        document.write("Contraseña segura.<br>");
+    if (tamano == true && mayuscula == true && minuscula == true && numero == true && value == true) {
+        document.write("Contraseña segura <br>");
     } else {
-        securePassword = false;
-        document.write("Contraseña no segura.<br>----------------------------------------------<br>");
+        document.write("Contraseña no segura <br>");
     }
-}
