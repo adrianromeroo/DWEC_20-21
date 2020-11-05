@@ -1,0 +1,7 @@
+function comenzarPartida() {
+
+}
+
+function nuevoNumero() {
+    
+}
