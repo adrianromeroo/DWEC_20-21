@@ -10,18 +10,18 @@
     </style>
 </head>
 <body>
-    <form action="URL" method="post" name="validamiento" onsubmit="return validar()">
+    <form>
         <label for="nombre_disco"> Nombre Disco: </label>
-        <input type="text" name="nombre_disco" required> <br>
+        <input id="nombre_disco" type="text" name="nombre_disco" required> <br>
 
         <label for="grupo_cantante"> Grupo/Cantante: </label>
-        <input type="text" name="grupo_cantante" required> <br>
+        <input id="grupo_cantante" type="text" name="grupo_cantante" required> <br>
 
         <label for="ano_publicacion"> Año Publicacion: </label>
-        <input type="number" name="ano_publicacion"> <br>
+        <input id="ano_publicacion" type="text" name="ano_publicacion"> <br>
 
         <label for="tipo_musica"> Tipo de musica:</label>
-        <select name="tipo_musica">
+        <select id="tipo_musica" name="tipo_musica">
             <option value="rock"> Rock </option>
             <option value="pop"> Pop </option>
             <option value="punk"> Punk </option>
@@ -29,14 +29,13 @@
         </select> <br>
 
         <label for="localizacion"> Localizacion: </label>
-        <input type="number" name="localizacion"> <br>
+        <input id="localizacion" type="number" name="localizacion"> <br>
 
         <label for="prestado"> Prestado: </label>
         <input type="radio" name="prestado" value="Si" /> Si
         <input type="radio" name="prestado" value="No" /> No <br>
 
-        <input type="submit" name="Enviar">
-        <input type="reset" name="Borrar">
+        <input type="submit" name="Enviar" value="Enviar Formulario">
 
     </form>
 </body>
