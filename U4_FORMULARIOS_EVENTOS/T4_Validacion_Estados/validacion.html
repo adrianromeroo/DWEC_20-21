@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validacion</title>
+    <script src="validacion.js" defer></script>
+    <style>
+        .error {
+            border: solid 4px red;
+        }
+    </style>
+</head>
+<body>
+    <form id="formulario">
+        <label for="nombre_disco"> Nombre Disco: </label>
+        <input id="nombre_disco" type="text" name="nombre_disco" required> <br>
+
+        <label for="grupo_cantante"> Grupo/Cantante: </label>
+        <input id="grupo_cantante" type="text" name="grupo_cantante" required> <br>
+
+        <label for="ano_publicacion"> Año Publicacion: </label>
+        <input id="ano_publicacion" type="text" name="ano_publicacion"> <br>
+
+        <label for="tipo_musica"> Tipo de musica:</label>
+        <select id="tipo_musica" name="tipo_musica">
+            <option value="rock"> Rock </option>
+            <option value="pop"> Pop </option>
+            <option value="punk"> Punk </option>
+            <option value="indie"> Indie </option>
+        </select> <br>
+
+        <label for="localizacion"> Localizacion: </label>
+        <input id="localizacion" type="text" name="localizacion"> <br>
+
+        <label for="prestado"> Prestado: </label>
+        <input type="radio" name="prestado" value="Si" /> Si
+        <input type="radio" name="prestado" value="No" /> No <br>
+
+        <input type="submit" id="enviar" name="enviar" value="Enviar Formulario">
+
+    </form>
+</body>
+</html>

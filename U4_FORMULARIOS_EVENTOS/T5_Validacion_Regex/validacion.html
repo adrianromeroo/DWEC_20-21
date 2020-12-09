@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>U4_T5</title>
+    <script src="validacion.js"></script>
+</head>
+<body>
+
+    <form>
+
+        <label for="fecha"> Fecha de creacion: </label>
+        <input type="date" id="fecha" name="fecha" required> <br>
+
+        <label for="cocinero"> Cocinero: </label>
+        <input type="text" id="cocinero" name="cocinero" required> <br>
+
+        <label for="destinatario"> Destinatario: </label>
+        <input type="text" id="destinatario" name="destinatario" required> <br>
+
+        <label for="gramos"> Gramos: </label>
+        <input type="text" id="gramos" name="gramos" min="100" max="5000" required> <br>
+
+        <label for="composicion"> Composicion: </label>
+        <input type="text" id="composicion" name="composicion" required> <br>
+
+        <label for="eeuu"> Numero de Cuenta EEUU: </label>
+        <input type="text" id="eeuu" name="eeuu" required> <br>
+
+        <input type="submit" id="enviar" name="enviar">
+
+    </form>
+
+</body>
+</html>
