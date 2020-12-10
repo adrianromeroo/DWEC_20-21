@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen</title>
+    <script src="script.js"></script>
+    <style>
+
+        .error{
+            border: solid 1px red;
+        }
+
+        .acierto {
+            border: solid 1px green;
+        }
+        
+        #errores{
+            background:red;
+            width: 50%;
+        }
+
+    </style>
+</head>
+<body>
+    <form id="form">
+        <label for="n_modelo"> Nombre Modelo:</label>
+        <input id="n_modelo" name="n_modelo" type="text"> <br>
+
+        <label for="tipo_modelo"> Tipo Modelo:</label>
+        <select id="tipo_modelo">
+            <option value=""> </option>
+            <option value="Televisor"> Televisor </option>
+            <option value="Frigorifico"> Frigorifico </option>
+            <option value="Lavadora"> Lavadora </option>
+            <option value="Microondas"> Microondas </option>
+            <option value="Lavavajillas"> Lavavajillas </option>
+        </select> <br>
+
+        <label for="fecha"> Fecha de creacion:</label>
+        <input id="fecha" name="fecha" type="text"> <br>
+
+        <label for="consumo"> Consumo energético:</label>
+        <input id="consumo" name="consumo" type="text"> <br>
+
+        <label for="referencia"> Referencia de modelo:</label>
+        <input id="referencia" name="referencia" type="text"> <br>
+
+        <label for="password"> Contraseña:</label>
+        <input id="password" name="password" type="password"> <br>
+
+        <input type="submit" id="enviar" value="Enviar">
+        <input type="reset" id="reset" value="Limpiar">
+
+        <div id="errores"> </div>
+        <div id="referencia"> </div>
+    </form>
+</body>
+</html>
