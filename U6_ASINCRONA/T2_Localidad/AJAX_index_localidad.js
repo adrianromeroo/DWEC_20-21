@@ -7,16 +7,19 @@ function iniciar() {
 
 function lanzar_peticion() {
 
-    // Creamos  un objeto XHR.
-    miXHR = new XMLHttpRequest();
+  // Creamos  un objeto XHR.
+  miXHR = new XMLHttpRequest();
 
-    // Cargamos el fichero fecha.php de forma asíncrona.
-    cargarAsync("localidad.php");
+  // Cargamos el fichero php de forma asíncrona.
+  cargarAsync("http://localhost:8090/U6_ASINCRONA/T2_Localidad/localidad.php");
+
 }
 
+
 // Carga el contenido de la url de forma asíncrona con Ajax
-function cargarAsync(url) {
-  if (miXHR) {
+function cargarAsync(localidad) {
+  if (localidad) {
+
     // Carga el indicador Ajax antes de realizar la petición.
     document.getElementById("indicador").innerHTML = "<img src='./ajax-loader.gif'/>";
 
@@ -30,7 +33,23 @@ function cargarAsync(url) {
     miXHR.send(null);
 
     console.log("justo después del send");
+
+    
+
+    if (miXHR) {    
+      console.log(miXHR.readyState);
+      
+      miXHR.open("GET", localidad+"?localidad="+ciudad, true);
+      console.log(miXHR.readyState);
+
+      miXHR.onreadystatechange = estadoPeticion;
+
+      miXHR.send(null);
   }
+  }
+
+
+
 
   // Se llama en cada cambio de estado de la petición.
   // 1. readyState == 4 cuando la petición ha terminado.
@@ -38,17 +57,22 @@ function cargarAsync(url) {
   function estadoPeticion() {
     console.log(miXHR.readyState);
     if (miXHR.readyState == 4 && miXHR.status == 200) {
-      // Desactivamos el indicador AJAX.
-      document.getElementById("indicador").innerHTML = "";
-      // Metemos en el contenedor resultados las  respuestas de la petición AJAX.
-      textoDIV(document.getElementById("resultados"), miXHR.responseText);
+      
+      
+
     }
   }
 }
 
-//var url = "bla.php";
-//var params = "somevariable=somevalue&anothervariable=anothervalue";
-//var http = new XMLHttpRequest();
 
-//http.open("GET", url+"?"+params, true);
-//http.send(null);
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        padding: 5px;
+      }
+
+      .negrita {
+        font-weight: bold;
+      }
+
+      .rojo {
+        background-color: red;
+      }
+
+      .verde {
+        background-color: green;
+      }
+
+      .amarillo {
+        background-color: yellow;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div id="texto">
+      <h1>Series</h1>
+      <button id="cargaCatalogo">Cargar Catálogo de Series</button>
+    </div>
+
+    <table id="demo"></table>
+
+    <script>
+      document.getElementById("cargaCatalogo").addEventListener("click", cargarCatalogo);
+
+      function cargarCatalogo() {
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState == 4 && xhr.status == 200) {
+            cargarXML(xhr);
+          }
+        };
+        xhr.open("GET", "series.xml", true);
+        xhr.send();
+      }
+
+
+      function cargarXML(xml) {
+        let docXML = xml.responseXML;
+        let tabla = "<tr><th>Titulo</th><th>Cadena</th><th>Director</th><th>Year</th><th>Terminado</th></tr>";
+        let series = docXML.getElementsByTagName("SERIE");
+        for (let i = 0; i < series.length; i++) {
+          tabla += '<tr><td class="negrita">';
+          tabla += series[i].getElementsByTagName("TITULO")[0].textContent;
+
+          tabla += "</td><td>";
+          tabla += series[i].getElementsByTagName("CADENA")[0].textContent;
+
+          tabla += "</td><td>";
+          tabla += series[i].getElementsByTagName("DIRECTOR")[0].textContent;
+
+          //COLOR DE FONDO DEPENDIENDO DEL AÑO
+          let year = series[i].getElementsByTagName("YEAR")[0].textContent;
+
+            if (year < 2000) {
+              tabla += "<td class='rojo'>" + year + "</td>";
+
+            } else if (year >= 2001 && year <= 2010){
+              tabla += "<td class='amarillo'>" + year + "</td>";
+
+            } else if (year >= 2011){
+              tabla += "<td class='verde'>" + year + "</td>";
+            }
+
+          //IMAGEN DEPENDIENDO DE SI ESTA TERMINADA O NO
+          let terminado = series[i].getElementsByTagName("TERMINADA")[0].textContent;
+
+            if (terminado == "SI") {
+              tabla += "<td><img src='tick.png' width=64px height=64px></td>";
+
+            } else if (terminado == "NO") {
+              tabla += "<td><img src='error.png' width=64px height=64px></td>";
+            }
+
+          tabla += "</td></tr>";
+        }
+        document.getElementById("demo").innerHTML = tabla;
+      }
+    </script>
+  </body>
+</html>
