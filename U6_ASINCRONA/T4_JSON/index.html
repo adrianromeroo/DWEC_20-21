@@ -53,49 +53,52 @@
         let xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function () {
           if (xhr.readyState == 4 && xhr.status == 200) {
-            cargarXML(xhr);
-          }
+            cargarJSON(xhr);
+          } 
         };
-        xhr.open("GET", "series.xml", true);
+        xhr.open("GET", "datosjson.php", true);
         xhr.send();
       }
 
-
-      function cargarXML(xml) {
-        let docXML = xml.responseXML;
+      function cargarJSON(json) {
+        let docJSON = JSON.parse(json.responseText);
         let tabla = "<tr><th>Titulo</th><th>Cadena</th><th>Director</th><th>Year</th><th>Terminado</th></tr>";
-        let series = docXML.getElementsByTagName("SERIE");
-        for (let i = 0; i < series.length; i++) {
+
+        for (serie of docJSON) {
           tabla += '<tr><td class="negrita">';
-          tabla += series[i].getElementsByTagName("TITULO")[0].textContent;
+          tabla += serie.TITULO;
 
           tabla += "</td><td>";
-          tabla += series[i].getElementsByTagName("CADENA")[0].textContent;
+          tabla += serie.CADENA;
 
           tabla += '</td><td class="cursiva">';
-          tabla += series[i].getElementsByTagName("DIRECTOR")[0].textContent;
+          tabla += serie.DIRECTOR;
 
           //COLOR DE FONDO DEPENDIENDO DEL AÑO
-          let year = series[i].getElementsByTagName("YEAR")[0].textContent;
+          let year = serie.ANYO;
 
             if (year < 2000) {
-              tabla += "<td class='rojo'>" + year + "</td>";
+
+              tabla += "</td><td class='rojo'>";
 
             } else if (year >= 2001 && year <= 2010){
-              tabla += "<td class='amarillo'>" + year + "</td>";
+
+              tabla += "</td><td class='amarillo'>";
 
             } else if (year >= 2011){
-              tabla += "<td class='verde'>" + year + "</td>";
+
+              tabla += "</td><td class='verde'>";
             }
+            tabla += year;
 
           //IMAGEN DEPENDIENDO DE SI ESTA TERMINADA O NO
-          let terminado = series[i].getElementsByTagName("TERMINADA")[0].textContent;
+          tabla += "</td><td>";
 
-            if (terminado == "SI") {
-              tabla += "<td><img src='tick.png' width=64px height=64px></td>";
+            if (serie.TERMINADA == "Si") {
+              tabla += "<img src='tick.png' width=64px height=64px>";
 
-            } else if (terminado == "NO") {
-              tabla += "<td><img src='error.png' width=64px height=64px></td>";
+            } else if (serie.TERMINADA == "No") {
+              tabla += "<img src='error.png' width=64px height=64px>";
             }
 
           tabla += "</td></tr>";

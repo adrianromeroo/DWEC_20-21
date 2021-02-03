@@ -1,78 +1,51 @@
-// Cuando se carga el documento comienza iniciar()
-crearEvento(window, "load", iniciar);
+//Cuando la página se cargue se llama a la funcion iniciar
+window.onload = iniciar;
 
+//Funcion Iniciar
 function iniciar() {
+  //Una vez que se haga click en el boton se llamara a la función "lanzar_peticion"
   document.getElementById("enviar").addEventListener("click", lanzar_peticion, true);
 }
 
 function lanzar_peticion() {
-
-  // Creamos  un objeto XHR.
+  //Creamos el objeto para hacer peticiones
   miXHR = new XMLHttpRequest();
-
-  // Cargamos el fichero php de forma asíncrona.
-  cargarAsync("http://localhost:8090/U6_ASINCRONA/T2_Localidad/localidad.php");
-
+  //Le mandamos a la funcion "cargarAsync" el archivo.php con el que vamos a trabajar
+  cargarAsync("localidad.php");
 }
 
-
-// Carga el contenido de la url de forma asíncrona con Ajax
+//Usamos la funcion con el archivo "php" pasado anteriormente
 function cargarAsync(localidad) {
-  if (localidad) {
-
-    // Carga el indicador Ajax antes de realizar la petición.
-    document.getElementById("indicador").innerHTML = "<img src='./ajax-loader.gif'/>";
-
+  if (miXHR) {
+    //Imprimimos el estado de la peticion
     console.log(miXHR.readyState);
-    //Si existe el objeto miXHR abrimos la url (asíncrona)
-    miXHR.open("GET", "localidad.php", true);
+
+    //Obtenemos lo insertado en el input
+    let loc = document.getElementById("localidad").value;
+
+    //Realizamos la peticion
+    miXHR.open("GET", localidad + "?localidad=" + loc, true);
+    //Imprimimos el estado de la peticion
     console.log(miXHR.readyState);
-    // En cada cambio de estado llama a estadoPetición
+
     miXHR.onreadystatechange = estadoPeticion;
-    // Hacemos la petición al servidor con GET y parámetro  null
+
     miXHR.send(null);
-
-    console.log("justo después del send");
-
-    
-
-    if (miXHR) {    
-      console.log(miXHR.readyState);
-      
-      miXHR.open("GET", localidad+"?localidad="+ciudad, true);
-      console.log(miXHR.readyState);
-
-      miXHR.onreadystatechange = estadoPeticion;
-
-      miXHR.send(null);
-  }
   }
 
-
-
-
-  // Se llama en cada cambio de estado de la petición.
-  // 1. readyState == 4 cuando la petición ha terminado.
-  // 2. Status == 200 encontrado; ==404 no encontado…
   function estadoPeticion() {
+    //Imprimimos el estado de la peticion
     console.log(miXHR.readyState);
     if (miXHR.readyState == 4 && miXHR.status == 200) {
-      
-      
-
+      if (miXHR.responseText === "SI") {
+        document.getElementById("resultado").innerHTML = "Si se ha encontrado la localidad";
+        document.getElementById("resultado").setAttribute("class","verde");
+      } else {
+        document.getElementById("resultado").innerHTML = "No se ha encontrado la localidad";
+        document.getElementById("resultado").setAttribute("class","rojo");
+      }
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 

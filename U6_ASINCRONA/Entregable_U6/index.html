@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        padding: 5px;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div id="texto">
+      <h1>Normandia</h1>
+
+      <label for="bando">Provincia:</label>
+      <select name="bando" id="bando">
+        <option value="1" selected="selected"> Aliados </option>
+        <option value="2"> Eje</option>
+      </select>
+
+      <button id="XMLHttpRequest"> Cargar Tabla con XMLHttpRequest </button> 
+      <button id="Fetch"> Cargar Tabla con Fetch </button>
+    </div>
+
+    <table id="tabla_Normandia"></table>
+
+    <script>
+      window.onload = inicio;
+
+      function inicio() {
+        document.getElementById("XMLHttpRequest").addEventListener("click", cargarCatalogo);
+        document.getElementById("Fetch").addEventListener("click", cargarCatalogo2);
+      }
+
+      function cargarCatalogo() {
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState == 4 && xhr.status == 200) {
+            cargarJSON(xhr);
+          } 
+        };
+        xhr.open("GET", "listar_armas.php", true);
+        xhr.send();
+      }
+
+      function cargarJSON(json) {
+        let docJSON = JSON.parse(json.responseText);
+        let tabla = "<tr><th>Nombre</th><th>Descripcion</th><th>Imagen</th><th>Bando</th></tr>";
+
+        for (arma of docJSON) {
+        
+          if (arma.bando == document.getElementById("bando").value) {
+            
+            tabla += "<tr><td>";
+            tabla += arma.nombre;
+
+            tabla += "</td><td>";
+            tabla += arma.descripcion;
+
+            //IMAGENES ARMAS
+            tabla += "</td><td>";
+            let imagen = arma.imagen;
+            if (imagen == "browning.jpg") {
+              tabla += "<img src = browning.jpg width = 64px height = 64px>"
+
+            } else if (imagen == "m1garand.jpg") {
+              tabla += "<img src = m1garand.jpg width = 64px height = 64px>"
+
+            } else if (imagen == "mg42.jpg") {
+              tabla += "<img src = mg42.jpg width = 64px height = 64px>"
+
+            } else if (imagen == "mp40.jpg") {
+              tabla += "<img src = mp40.jpg width = 64px height = 64px>"
+
+            } else if (imagen == "panzerschreck.jpg") {
+              tabla += "<img src = panzerschreck.jpg width = 64px height = 64px>"
+
+            } else if (imagen == "springfield.jpg") {
+              tabla += "<img src = springfield.jpg width = 64px height = 64px>"
+            }
+
+            tabla += "</td><td>";
+            tabla += arma.bando;   
+
+            tabla += "</td></tr>";
+          }
+        }
+        document.getElementById("tabla_Normandia").innerHTML = tabla;
+      }
+
+      function cargarCatalogo2() {
+        fetch("listar_armas.php")
+        .then(response => response.json())
+        .then(data => {
+
+        let tabla = "<tr><th>Nombre</th><th>Descripcion</th><th>Imagen</th><th>Bando</th></tr>";
+
+        for (arma of data) {
+        
+          if (arma.bando == document.getElementById("bando").value) {
+            
+            tabla += "<tr><td>";
+            tabla += arma.nombre;
+
+            tabla += "</td><td>";
+            tabla += arma.descripcion;
+
+            //IMAGENES ARMAS
+            tabla += "</td><td>";
+            let imagen = arma.imagen;
+            if (imagen == "browning.jpg") {
+              tabla += "<img src = browning.jpg width = 64px height = 64px>"
+
+            } else if (imagen == "m1garand.jpg") {
+              tabla += "<img src = m1garand.jpg width = 64px height = 64px>"
+
+            } else if (imagen == "mg42.jpg") {
+              tabla += "<img src = mg42.jpg width = 64px height = 64px>"
+
+            } else if (imagen == "mp40.jpg") {
+              tabla += "<img src = mp40.jpg width = 64px height = 64px>"
+
+            } else if (imagen == "panzerschreck.jpg") {
+              tabla += "<img src = panzerschreck.jpg width = 64px height = 64px>"
+
+            } else if (imagen == "springfield.jpg") {
+              tabla += "<img src = springfield.jpg width = 64px height = 64px>"
+            }
+
+            tabla += "</td><td>";
+            tabla += arma.bando;   
+
+            tabla += "</td></tr>";
+          }
+        }
+        document.getElementById("tabla_Normandia").innerHTML = tabla;
+
+      })
+        .catch((err) => console.log(err));
+      }
+
+    </script>
+  </body>
+</html>
