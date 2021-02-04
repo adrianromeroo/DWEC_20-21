@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="script.js"></script>
+    <title>Vacunacion</title>
+    <style>
+        table {
+            border: 1px solid black;
+        }
+
+        th {
+            border: 1px solid black;
+        }
+
+        td {
+            border: 1px solid black;
+        }
+
+    </style>
+</head>
+<body>
+
+    <label for="CCAA">CC.AA:</label>
+    <select name="CCAA" id="CCAA">
+        
+    </select> <br>
+
+    <label for="d_entregadas"> D.Entregadas:</label>
+    <input type="number" id="d_entregadas" name="d_entregadas"><br>
+
+    <label for="d_administradas"> D.Admin:</label>
+    <input type="number" id="d_administradas" name="d_administradas"><br>
+
+    <label for="d_completa"> D.Completa:</label>
+    <input type="number" id="d_completa" name="d_completa"><br>
+
+    <label for="p_entregadas"> P.Entregadas:</label>
+    <input type="number" id="p_entregadas" name="p_entregadas"><br>
+
+    <label for="p_administradas"> P.Admin:</label>
+    <input type="number" id="p_administradas" name="p_administradas"><br>
+
+    <label for="p_completa"> P.Completa:</label>
+    <input type="number" id="p_completa" name="p_completa"><br>
+
+    <button id="enviar"> Modificar Datos </button>
+
+    <hr>
+
+    <button id="cargar_datos_xmlhttprequest"> Cargar datos vacunación (XMLHttpRequest)</button>
+    <button id="cargar_datos_fetch"> Cargar datos vacunación (Fetch)</button>
+
+    <table id="tabla"></table>
+    <div id="resultado"></div>
+</body>
+</html>
